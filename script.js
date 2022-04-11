@@ -434,11 +434,11 @@ function imgForca(){
 }
 
 function perdeu(){
-    window.location.replace("http://localhost:52330/gameover.html");
+    window.location.replace("https://biularambo.github.io/JogoForca/gameover.html");
 }
 
 function ganhou(){
-    window.location.replace("http://localhost:52330/vencedor.html");
+    window.location.replace("https://biularambo.github.io/JogoForca/vencedor.html");
 }
 
 let btnReiniciar = document.querySelector("#btnReiniciar")
