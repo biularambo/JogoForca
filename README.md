@@ -33,4 +33,4 @@ Por enquanto não há erros...
 
 
 ### disponibilizado em
-[GITHubPage](https://biularambo.github.io/JogoForca/)
+[GITHubPage](https://biularambo.github.io/JogoForca/index.html)
