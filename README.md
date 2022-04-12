@@ -20,6 +20,7 @@ As letras que já foram usadas ficam marcadas e não podem ser repetidas.
 2. [ ] Deixar mais responsivo
 3. [ ] Personalizar para uso mobile
 4. [ ] Aumentar o número de palavras
+5. [ ] Colocar botão de mais dicas
 
 ### ERROS:
 Por enquanto não há erros...
