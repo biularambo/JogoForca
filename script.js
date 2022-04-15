@@ -340,7 +340,9 @@ function gerarDica(){
     if(numDica > 0){
         num = parseInt(Math.random() * caracteres.length)
         caracter = caracteres[num];
-        verificaLetraEscolhida(caracter);
+        mudarStyleLetra("tecla-" + caracter);
+        comparar(caracter);
+        montarPalavraNaTela();
         for(let i=0;i<caracteres.length;i++){
             if(caracter == caracteres[i]){
                 caracteres = caracteres.filter(function(item) {
