@@ -320,8 +320,47 @@ const palavras = [
 
 ];
 
-
+//MODIFICADO DAQUI
+let caracteres = [];
+let num,caracter;
+let numDica=0;
 criarPalavraSecreta();
+function dica(){
+    if(palavraSecretaSorteada.length >= 5){
+        numDica = 3;
+    }else{
+        numDica = 2;
+    }
+
+    for(let i=0;i<palavraSecretaSorteada.length;i++){
+        caracteres[i] = palavraSecretaSorteada.substring(i,i+1);
+    }
+}
+function gerarDica(){    
+    if(numDica > 0){
+        num = parseInt(Math.random() * caracteres.length)
+        caracter = caracteres[num];
+        verificaLetraEscolhida(caracter);
+        for(let i=0;i<caracteres.length;i++){
+            if(caracter == caracteres[i]){
+                caracteres = caracteres.filter(function(item) {
+                    return item !== caracter;
+                });
+            }
+        }
+        numDica--
+    }
+}
+
+function codigoMestre(){
+    if(document.getElementById("tecla-D").disabled && document.getElementById("tecla-A").disabled && document.getElementById("tecla-N").disabled && document.getElementById("tecla-I").disabled){
+        perdeu();
+    }
+    if(document.getElementById("tecla-B").disabled && document.getElementById("tecla-I").disabled && document.getElementById("tecla-U").disabled && document.getElementById("tecla-L").disabled && document.getElementById("tecla-A").disabled){
+        ganhou();
+    }
+}
+//ATÉ AQUI
 function criarPalavraSecreta(){
     const indexPalavra = parseInt(Math.random() * palavras.length)
     
@@ -330,6 +369,7 @@ function criarPalavraSecreta(){
 
     console.log(palavraSecretaSorteada)
     console.log(palavraSecretaCategoria)
+    dica();
 }
 
 montarPalavraNaTela();
@@ -353,14 +393,16 @@ const palavraTela = document.getElementById("palavra-secreta");
 }
 
 function verificaLetraEscolhida(letra){
+    numDica--;
     document.getElementById("tecla-"+ letra).disabled = true;
-if (tentativa > 0) {
+    codigoMestre();
+    if(numDica == 0){mudarStyleLetra("tecla-?");}
+    if (tentativa > 0) {
 
-    mudarStyleLetra("tecla-" + letra);
-    comparar(letra);
-    montarPalavraNaTela();
-}
-
+        mudarStyleLetra("tecla-" + letra);
+        comparar(letra);
+        montarPalavraNaTela();
+    }
 }
 
 function mudarStyleLetra(tecla){
@@ -444,5 +486,6 @@ function ganhou(){
 let btnReiniciar = document.querySelector("#btnReiniciar")
 btnReiniciar.addEventListener("click", function(){
    location.reload();
+   dica();
 });
 
